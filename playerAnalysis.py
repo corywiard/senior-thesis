@@ -26,14 +26,13 @@ def dataCollectorReds(year):
             soup = BeautifulSoup(html, "lxml")
 
             # collects variable names
-            variables = ['Name']
+            variables = []
             player_variables = soup.find('table', attrs={'class': 'Table Table--align-right'})
             for stats_variables in player_variables.find_all('th'):
                 variables.append(stats_variables.get_text())
 
             # turns list into dictionary
             #variables_dict = dict.fromkeys(variables)
-
             # collects all data from table
             #stats_list = []
             #player_stats = soup.find('div', attrs={'class': 'ResponsiveTable ResponsiveTable--fixed-left mt5 remove_capitalize'})
@@ -41,12 +40,12 @@ def dataCollectorReds(year):
                 #stats_list.append(stats.get_text())
 
             # collects name from Table
-            names = []
+            names = ['Name']
             name_variable = soup.find('tbody', attrs={'class': 'Table__TBODY'})
             for data in name_variable.find_all('tr'):
                 names.append(data.get_text())
 
-            #names_dict = dict.fromkeys(names)
+            names_dict_reds = dict.fromkeys(names)
 
             # collects data in new list
             data_row = []
@@ -55,22 +54,20 @@ def dataCollectorReds(year):
                 data_row.append(info.get_text())
 
             multi_list_of_stats = []
+            multi_list_of_stats.append(variables[0:17])
             x = 0
             while x < len(names):
                 multi_list_of_stats.append(data_row[0:17])
                 del data_row[0:17]
                 x = x + 1
 
-            return stats_list
-            #print(names)
-            #print(variables)
-            #with open('team', 'w') as f:
+            i = 0
+            for key in names_dict_reds:
+                names_dict_reds[key] = multi_list_of_stats[i]
+                i = i + 1
 
-                # using csv.writer method from CSV package
-                #write = csv.writer(f)
-
-                #write.writerow(variables)
-                #write.writerow(names)
+            return names_dict_reds
+            #return stats_list
 
 def dataCollectorCardinals(year):
         # pull in web's source code
@@ -82,47 +79,69 @@ def dataCollectorCardinals(year):
             soup = BeautifulSoup(html, "lxml")
 
             # collects variable names
-            variables = ['Name']
+            variables = []
             player_variables = soup.find('table', attrs={'class': 'Table Table--align-right'})
             for stats_variables in player_variables.find_all('th'):
                 variables.append(stats_variables.get_text())
 
             # turns list into dictionary
-            variables_dict = dict.fromkeys(variables)
-
+            #variables_dict = dict.fromkeys(variables)
             # collects all data from table
-            stats_list_Cards = []
-            player_stats = soup.find('div', attrs={'class': 'ResponsiveTable ResponsiveTable--fixed-left mt5 remove_capitalize'})
-            for stats in player_stats.find_all('td'):
-                stats_list_Cards.append(stats.get_text())
+            #stats_list = []
+            #player_stats = soup.find('div', attrs={'class': 'ResponsiveTable ResponsiveTable--fixed-left mt5 remove_capitalize'})
+            #for stats in player_stats.find_all('td'):
+                #stats_list.append(stats.get_text())
+
+            # collects name from Table
+            names = ['Name']
+            name_variable = soup.find('tbody', attrs={'class': 'Table__TBODY'})
+            for data in name_variable.find_all('tr'):
+                names.append(data.get_text())
+
+            names_dict_cards = dict.fromkeys(names)
+
+            # collects data in new list
+            data_row = []
+            row_stats = soup.find('table', attrs={'class': 'Table Table--align-right'})
+            for info in row_stats.find_all('td'):
+                data_row.append(info.get_text())
+
+            multi_list_of_stats = []
+            multi_list_of_stats.append(variables[0:17])
+            x = 0
+            while x < len(names):
+                multi_list_of_stats.append(data_row[0:17])
+                del data_row[0:17]
+                x = x + 1
+
+            i = 0
+            for key in names_dict_cards:
+                names_dict_cards[key] = multi_list_of_stats[i]
+                i = i + 1
+
+            return names_dict_cards
 
 
-            # Organize the data
-            # stores name in new list
-
-            return stats_list_Cards
-
-
-def data_store_csv_Reds(year, stats_list, variables):
+def data_store_csv_Reds(year, names_dict_reds):
     # transfering data to CSV
-    df = pd.DataFrame(stats_list)
+    df = pd.DataFrame(names_dict_reds)
     df.to_csv("upload/Reds/cincyReds{}.csv".format(year), index=False)
 
-def data_store_csv_Cards(year, stats_list_Cards):
+def data_store_csv_Cards(year, names_dict_cards):
     # transfering data to CSV
-    df = pd.DataFrame(stats_list_Cards)
+    df = pd.DataFrame(names_dict_cards)
     df.to_csv("upload/Cardinals/StlCards{}.csv".format(year), index=False)
 
 
 
 def main():
     year = 2002
-    #while year <= 2018:
-    stats_list = dataCollectorReds(year)
-    #data_store_csv_Reds(year, stats_list, variables)
-        #stats_list_Cards = dataCollectorCardinals(year)
-        #data_store_csv_Cards(year, stats_list_Cards)
-        #year = year + 1
+    while year <= 2018:
+        names_dict_reds = dataCollectorReds(year)
+        data_store_csv_Reds(year, names_dict_reds)
+        names_dict_cards = dataCollectorCardinals(year)
+        data_store_csv_Cards(year, names_dict_cards)
+        year = year + 1
 
 if __name__ == '__main__':
     main()

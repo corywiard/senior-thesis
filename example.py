@@ -22,3 +22,7 @@ def example():
     #print(url)
 
     soup = BeautifulSoup(html, "lxml")
+name_list = soup.find_all(class_='Table__TBODY')
+name_list_items = []
+for i in name_list:
+    name_list_items.append(i.get_text())
