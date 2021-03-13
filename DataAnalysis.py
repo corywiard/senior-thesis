@@ -44,7 +44,7 @@ def dataStore(RedsTotalData, year):
     df.to_csv("upload/RedsData{}.csv".format(year))
 
 def dataCorrelation(year):
-    df = pd.read_csv("upload/RedsData{}.csv".format(year))
+    df = pd.read_csv("upload/Reds/Totals/RedsData{}.csv".format(year))
     WinsCorr = df.corr(method='pearson')
     #print(WinsCorr)
     #print()
@@ -58,7 +58,7 @@ def main():
         RedsDict = dataOrganizer(year, RedsWins)
         RedsTotalData.update(RedsDict)
         dataStore(RedsTotalData, year)
-        RedsTotalData.clear()
+        #RedsTotalData.clear()
         year = year + 1
     dataCorrelation(year)
 
