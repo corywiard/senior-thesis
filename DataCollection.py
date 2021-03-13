@@ -370,6 +370,251 @@ def dataCollectorPhillies(year):
             return names_dict_phil
             #return stats_list
 
+def dataCollectorMets(year):
+        # pull in web's source code
+            url = "https://www.espn.com/mlb/team/stats/_/name/nym/season/{}/seasontype/2".format(year)
+            html = urlopen(url)
+
+            #print(url)
+
+            soup = BeautifulSoup(html, "lxml")
+
+            # collects variable names
+            variables = []
+            player_variables = soup.find('table', attrs={'class': 'Table Table--align-right'})
+            for stats_variables in player_variables.find_all('th'):
+                variables.append(stats_variables.get_text())
+
+            # collects player's name from Table
+            names = ['Name']
+            name_variable = soup.find('tbody', attrs={'class': 'Table__TBODY'})
+            for data in name_variable.find_all('tr'):
+                names.append(data.get_text())
+
+            # Turns list into dictionary
+            names_dict_mets = dict.fromkeys(names)
+
+            # collects player's data into list
+            data_row = []
+            row_stats = soup.find('table', attrs={'class': 'Table Table--align-right'})
+            for info in row_stats.find_all('td'):
+                data_row.append(info.get_text())
+
+            # multi-dimensional list to hold player stats
+            multi_list_of_stats = []
+            # list adds variable names to it
+            multi_list_of_stats.append(variables[0:17])
+            x = 0
+            # while loop to add row of player stats to new list and delete from old list
+            while x < len(names):
+                multi_list_of_stats.append(data_row[0:17])
+                del data_row[0:17]
+                x = x + 1
+            # for loop to iterate through dictionary adding list index
+            i = 0
+            for key in names_dict_mets:
+                names_dict_mets[key] = multi_list_of_stats[i]
+                i = i + 1
+
+            return names_dict_mets
+            #return stats_list
+
+def dataCollectorDBacks(year):
+        # pull in web's source code
+            url = "https://www.espn.com/mlb/team/stats/_/name/ari/season/{}/seasontype/2".format(year)
+            html = urlopen(url)
+
+            #print(url)
+
+            soup = BeautifulSoup(html, "lxml")
+
+            # collects variable names
+            variables = []
+            player_variables = soup.find('table', attrs={'class': 'Table Table--align-right'})
+            for stats_variables in player_variables.find_all('th'):
+                variables.append(stats_variables.get_text())
+
+            # collects player's name from Table
+            names = ['Name']
+            name_variable = soup.find('tbody', attrs={'class': 'Table__TBODY'})
+            for data in name_variable.find_all('tr'):
+                names.append(data.get_text())
+
+            # Turns list into dictionary
+            names_dict_dbacks = dict.fromkeys(names)
+
+            # collects player's data into list
+            data_row = []
+            row_stats = soup.find('table', attrs={'class': 'Table Table--align-right'})
+            for info in row_stats.find_all('td'):
+                data_row.append(info.get_text())
+
+            # multi-dimensional list to hold player stats
+            multi_list_of_stats = []
+            # list adds variable names to it
+            multi_list_of_stats.append(variables[0:17])
+            x = 0
+            # while loop to add row of player stats to new list and delete from old list
+            while x < len(names):
+                multi_list_of_stats.append(data_row[0:17])
+                del data_row[0:17]
+                x = x + 1
+            # for loop to iterate through dictionary adding list index
+            i = 0
+            for key in names_dict_dbacks:
+                names_dict_dbacks[key] = multi_list_of_stats[i]
+                i = i + 1
+
+            return names_dict_dbacks
+            #return stats_list
+
+def dataCollectorGiants(year):
+        # pull in web's source code
+            url = "https://www.espn.com/mlb/team/stats/_/name/sf/season/{}/seasontype/2".format(year)
+            html = urlopen(url)
+
+            #print(url)
+
+            soup = BeautifulSoup(html, "lxml")
+
+            # collects variable names
+            variables = []
+            player_variables = soup.find('table', attrs={'class': 'Table Table--align-right'})
+            for stats_variables in player_variables.find_all('th'):
+                variables.append(stats_variables.get_text())
+
+            # collects player's name from Table
+            names = ['Name']
+            name_variable = soup.find('tbody', attrs={'class': 'Table__TBODY'})
+            for data in name_variable.find_all('tr'):
+                names.append(data.get_text())
+
+            # Turns list into dictionary
+            names_dict_giants = dict.fromkeys(names)
+
+            # collects player's data into list
+            data_row = []
+            row_stats = soup.find('table', attrs={'class': 'Table Table--align-right'})
+            for info in row_stats.find_all('td'):
+                data_row.append(info.get_text())
+
+            # multi-dimensional list to hold player stats
+            multi_list_of_stats = []
+            # list adds variable names to it
+            multi_list_of_stats.append(variables[0:17])
+            x = 0
+            # while loop to add row of player stats to new list and delete from old list
+            while x < len(names):
+                multi_list_of_stats.append(data_row[0:17])
+                del data_row[0:17]
+                x = x + 1
+            # for loop to iterate through dictionary adding list index
+            i = 0
+            for key in names_dict_giants:
+                names_dict_giants[key] = multi_list_of_stats[i]
+                i = i + 1
+
+            return names_dict_giants
+            #return stats_list
+
+def dataCollectorRockies(year):
+        # pull in web's source code
+            url = "https://www.espn.com/mlb/team/stats/_/name/col/season/{}/seasontype/2".format(year)
+            html = urlopen(url)
+
+            #print(url)
+
+            soup = BeautifulSoup(html, "lxml")
+
+            # collects variable names
+            variables = []
+            player_variables = soup.find('table', attrs={'class': 'Table Table--align-right'})
+            for stats_variables in player_variables.find_all('th'):
+                variables.append(stats_variables.get_text())
+
+            # collects player's name from Table
+            names = ['Name']
+            name_variable = soup.find('tbody', attrs={'class': 'Table__TBODY'})
+            for data in name_variable.find_all('tr'):
+                names.append(data.get_text())
+
+            # Turns list into dictionary
+            names_dict_rockies = dict.fromkeys(names)
+
+            # collects player's data into list
+            data_row = []
+            row_stats = soup.find('table', attrs={'class': 'Table Table--align-right'})
+            for info in row_stats.find_all('td'):
+                data_row.append(info.get_text())
+
+            # multi-dimensional list to hold player stats
+            multi_list_of_stats = []
+            # list adds variable names to it
+            multi_list_of_stats.append(variables[0:17])
+            x = 0
+            # while loop to add row of player stats to new list and delete from old list
+            while x < len(names):
+                multi_list_of_stats.append(data_row[0:17])
+                del data_row[0:17]
+                x = x + 1
+            # for loop to iterate through dictionary adding list index
+            i = 0
+            for key in names_dict_rockies:
+                names_dict_rockies[key] = multi_list_of_stats[i]
+                i = i + 1
+
+            return names_dict_rockies
+            #return stats_list
+
+def dataCollectorPadres(year):
+        # pull in web's source code
+            url = "https://www.espn.com/mlb/team/stats/_/name/sd/season/{}/seasontype/2".format(year)
+            html = urlopen(url)
+
+            #print(url)
+
+            soup = BeautifulSoup(html, "lxml")
+
+            # collects variable names
+            variables = []
+            player_variables = soup.find('table', attrs={'class': 'Table Table--align-right'})
+            for stats_variables in player_variables.find_all('th'):
+                variables.append(stats_variables.get_text())
+
+            # collects player's name from Table
+            names = ['Name']
+            name_variable = soup.find('tbody', attrs={'class': 'Table__TBODY'})
+            for data in name_variable.find_all('tr'):
+                names.append(data.get_text())
+
+            # Turns list into dictionary
+            names_dict_padres = dict.fromkeys(names)
+
+            # collects player's data into list
+            data_row = []
+            row_stats = soup.find('table', attrs={'class': 'Table Table--align-right'})
+            for info in row_stats.find_all('td'):
+                data_row.append(info.get_text())
+
+            # multi-dimensional list to hold player stats
+            multi_list_of_stats = []
+            # list adds variable names to it
+            multi_list_of_stats.append(variables[0:17])
+            x = 0
+            # while loop to add row of player stats to new list and delete from old list
+            while x < len(names):
+                multi_list_of_stats.append(data_row[0:17])
+                del data_row[0:17]
+                x = x + 1
+            # for loop to iterate through dictionary adding list index
+            i = 0
+            for key in names_dict_padres:
+                names_dict_padres[key] = multi_list_of_stats[i]
+                i = i + 1
+
+            return names_dict_padres
+            #return stats_list
+
 def data_store_csv_Reds(year, names_dict_reds):
     # transfering data to CSV
     df = pd.DataFrame.from_dict(names_dict_reds, orient="index")
@@ -400,6 +645,26 @@ def data_store_csv_Phil(year, names_dict_phil):
     df = pd.DataFrame.from_dict(names_dict_phil, orient="index")
     df.to_csv("upload/Phillies/PhiPhil{}.csv".format(year), header = 0)
 
+def data_store_csv_Mets(year, names_dict_mets):
+    df = pd.DataFrame.from_dict(names_dict_mets, orient="index")
+    df.to_csv("upload/Mets/NYMets{}.csv".format(year), header = 0)
+
+def data_store_csv_DBacks(year, names_dict_dbacks):
+    df = pd.DataFrame.from_dict(names_dict_dbacks, orient="index")
+    df.to_csv("upload/DBacks/AriDBacks{}.csv".format(year), header = 0)
+
+def data_store_csv_Giants(year, names_dict_giants):
+    df = pd.DataFrame.from_dict(names_dict_giants, orient="index")
+    df.to_csv("upload/Giants/SfGiants{}.csv".format(year), header = 0)
+
+def data_store_csv_Rockies(year, names_dict_rockies):
+    df = pd.DataFrame.from_dict(names_dict_rockies, orient="index")
+    df.to_csv("upload/Rockies/ColRockies{}.csv".format(year), header = 0)
+
+def data_store_csv_Padres(year, names_dict_padres):
+    df = pd.DataFrame.from_dict(names_dict_padres, orient="index")
+    df.to_csv("upload/Padres/SdPadres{}.csv".format(year), header = 0)
+
 def main():
     year = 2002
     while year <= 2018:
@@ -417,6 +682,16 @@ def main():
         data_store_csv_Braves(year, names_dict_braves)
         names_dict_phil = dataCollectorPhillies(year)
         data_store_csv_Phil(year, names_dict_phil)
+        names_dict_mets = dataCollectorMets(year)
+        data_store_csv_Mets(year, names_dict_mets)
+        names_dict_dbacks = dataCollectorDBacks(year)
+        data_store_csv_DBacks(year, names_dict_dbacks)
+        names_dict_giants = dataCollectorGiants(year)
+        data_store_csv_Giants(year, names_dict_giants)
+        names_dict_rockies = dataCollectorRockies(year)
+        data_store_csv_Rockies(year, names_dict_rockies)
+        names_dict_padres = dataCollectorPadres(year)
+        data_store_csv_Padres(year, names_dict_padres)
         year = year + 1
 
 if __name__ == '__main__':
