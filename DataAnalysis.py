@@ -12,7 +12,7 @@ AUTHORMAIL = "wiardc@allegheny.edu"
 
 import pandas as pd
 from itertools import chain
-
+import os
 
 def dataCollectWins():
     file = open("RedsWins.txt", "r")

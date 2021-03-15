@@ -6,13 +6,10 @@ AUTHOR = "Cory Wiard"
 AUTHORMAIL = "wiardc@allegheny.edu"
 
 
-#import numpy as np
-#import matplotlib.pyplot as plt
-
-
 import pandas as pd
 from urllib.request import urlopen
 from bs4 import BeautifulSoup
+import os
 #import re
 
 
@@ -30,9 +27,6 @@ def dataCollectorReds(year):
             player_variables = soup.find('table', attrs={'class': 'Table Table--align-right'})
             for stats_variables in player_variables.find_all('th'):
                 variables.append(stats_variables.get_text())
-
-            #variables_dict = dict.fromkeys(variables)
-
 
             # collects player's name from Table
             names = ['Name']
@@ -665,8 +659,127 @@ def data_store_csv_Padres(year, names_dict_padres):
     df = pd.DataFrame.from_dict(names_dict_padres, orient="index")
     df.to_csv("upload/Padres/SdPadres{}.csv".format(year), header = 0)
 
+def CreateDirectory():
+    path = os.getcwd()
+    path = path + "/upload"
+    try:
+        os.mkdir(path)
+    except OSError:
+        print ("Creation of the directory %s failed" % path)
+    else:
+        print ("Successfully created the directory %s " % path)
+
+    path2 = os.getcwd()
+    path2 = path2 + "/upload/Reds"
+    try:
+        os.mkdir(path2)
+    except OSError:
+        print ("Creation of the directory %s failed" % path2)
+    else:
+        print ("Successfully created the directory %s " % path2)
+
+    path3 = os.getcwd()
+    path3 = path3 + "/upload/Cardinals"
+    try:
+        os.mkdir(path3)
+    except OSError:
+        print ("Creation of the directory %s failed" % path3)
+    else:
+        print ("Successfully created the directory %s " % path3)
+
+    path4 = os.getcwd()
+    path4 = path4 + "/upload/Pirates"
+    try:
+        os.mkdir(path4)
+    except OSError:
+        print ("Creation of the directory %s failed" % path4)
+    else:
+        print ("Successfully created the directory %s " % path4)
+
+    path5 = os.getcwd()
+    path5 = path5 + "/upload/Cubs"
+    try:
+        os.mkdir(path5)
+    except OSError:
+        print ("Creation of the directory %s failed" % path5)
+    else:
+        print ("Successfully created the directory %s " % path5)
+
+    path6 = os.getcwd()
+    path6 = path6 + "/upload/Brewers"
+    try:
+        os.mkdir(path6)
+    except OSError:
+        print ("Creation of the directory %s failed" % path6)
+    else:
+        print ("Successfully created the directory %s " % path6)
+
+    path7 = os.getcwd()
+    path7 = path7 + "/upload/Braves"
+    try:
+        os.mkdir(path7)
+    except OSError:
+        print ("Creation of the directory %s failed" % path7)
+    else:
+        print ("Successfully created the directory %s " % path7)
+
+    path8 = os.getcwd()
+    path8 = path8 + "/upload/Phillies"
+    try:
+        os.mkdir(path8)
+    except OSError:
+        print ("Creation of the directory %s failed" % path8)
+    else:
+        print ("Successfully created the directory %s " % path8)
+
+    path9 = os.getcwd()
+    path9 = path9 + "/upload/Mets"
+    try:
+        os.mkdir(path9)
+    except OSError:
+        print ("Creation of the directory %s failed" % path9)
+    else:
+        print ("Successfully created the directory %s " % path9)
+
+    path10 = os.getcwd()
+    path10 = path10 + "/upload/DBacks"
+    try:
+        os.mkdir(path10)
+    except OSError:
+        print ("Creation of the directory %s failed" % path10)
+    else:
+        print ("Successfully created the directory %s " % path10)
+
+    path11 = os.getcwd()
+    path11 = path11 + "/upload/Giants"
+    try:
+        os.mkdir(path11)
+    except OSError:
+        print ("Creation of the directory %s failed" % path11)
+    else:
+        print ("Successfully created the directory %s " % path11)
+
+    path12 = os.getcwd()
+    path12 = path12 + "/upload/Rockies"
+    try:
+        os.mkdir(path12)
+    except OSError:
+        print ("Creation of the directory %s failed" % path12)
+    else:
+        print ("Successfully created the directory %s " % path12)
+
+    path13 = os.getcwd()
+    path13 = path13 + "/upload/Padres"
+    try:
+        os.mkdir(path13)
+    except OSError:
+        print ("Creation of the directory %s failed" % path13)
+    else:
+        print ("Successfully created the directory %s " % path13)
+
 def main():
     year = 2002
+    CreateDirectory()
     while year <= 2018:
         names_dict_reds = dataCollectorReds(year)
         data_store_csv_Reds(year, names_dict_reds)
