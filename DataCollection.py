@@ -18,8 +18,6 @@ def dataCollectorReds(year):
             url = "https://www.espn.com/mlb/team/stats/_/name/cin/season/{}/seasontype/2".format(year)
             html = urlopen(url)
 
-            #print(url)
-
             soup = BeautifulSoup(html, "lxml")
 
             # collects variable names
@@ -777,10 +775,19 @@ def CreateDirectory():
     else:
         print ("Successfully created the directory %s " % path13)
 
+    path14 = os.getcwd()
+    path14 = path14 + "/Wins"
+    try:
+        os.mkdir(path14)
+    except OSError:
+        print ("Creation of the directory %s failed" % path14)
+    else:
+        print ("Successfully created the directory %s " % path14)
+
 def main():
     year = 2002
     CreateDirectory()
-    while year <= 2018:
+    while year <= 2019:
         names_dict_reds = dataCollectorReds(year)
         data_store_csv_Reds(year, names_dict_reds)
         names_dict_cards = dataCollectorCardinals(year)
