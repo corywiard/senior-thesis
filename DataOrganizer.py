@@ -20,18 +20,22 @@ import os
 
 def dataOrganizerReds(year, RedsWins):
 
-    i = 0
-    df = pd.read_csv("upload/Reds/cincyReds{}.csv".format(year), header=None)
-    row = df.tail(1)
-    RedsData = row.values.tolist()
-    NewList = list(chain.from_iterable(RedsData))
-    NewList.extend(RedsWins[i])
-    RedsWins.remove(RedsWins[i])
-    NewList.pop(0)
-    NewList.pop(16)
-    RedsDict = {year: NewList}
+    if os.path.isfile("upload/Reds/cincyReds{}.csv".format(year)):
+        i = 0
+        df = pd.read_csv("upload/Reds/cincyReds{}.csv".format(year), header=None)
+        row = df.tail(1)
+        RedsData = row.values.tolist()
+        NewList = list(chain.from_iterable(RedsData))
+        NewList.extend(RedsWins[i])
+        RedsWins.remove(RedsWins[i])
+        NewList.pop(0)
+        NewList.pop(16)
+        RedsDict = {year: NewList}
 
-    return RedsDict
+        return RedsDict
+    else:
+        print("The csv files you are trying to access for Reds", year, "do not exist. Please try something else.")
+        main()
 
 def dataStoreReds(RedsTotalData, year, variables, path):
     df = pd.DataFrame.from_dict(RedsTotalData, orient="index")
@@ -44,18 +48,21 @@ def dataStoreReds(RedsTotalData, year, variables, path):
 
 def dataOrganizerCards(year, CardsWins):
 
-    i = 0
-    df = pd.read_csv("upload/Cardinals/StlCards{}.csv".format(year), header=None)
-    row = df.tail(1)
-    CardsData = row.values.tolist()
-    NewList = list(chain.from_iterable(CardsData))
-    NewList.extend(CardsWins[i])
-    CardsWins.remove(CardsWins[i])
-    NewList.pop(0)
-    NewList.pop(16)
-    CardsDict = {year: NewList}
-
-    return CardsDict
+    if os.path.isfile("upload/Cardinals/StlCards{}.csv".format(year)):
+        i = 0
+        df = pd.read_csv("upload/Cardinals/StlCards{}.csv".format(year), header=None)
+        row = df.tail(1)
+        CardsData = row.values.tolist()
+        NewList = list(chain.from_iterable(CardsData))
+        NewList.extend(CardsWins[i])
+        CardsWins.remove(CardsWins[i])
+        NewList.pop(0)
+        NewList.pop(16)
+        CardsDict = {year: NewList}
+        return CardsDict
+    else:
+        print("The csv files you are trying to access for Cardinals", year, "do not exist. Please try something else.")
+        main()
 
 def dataStoreCards(CardsTotalData, year, variables, path):
     df = pd.DataFrame.from_dict(CardsTotalData, orient="index")
@@ -68,18 +75,21 @@ def dataStoreCards(CardsTotalData, year, variables, path):
 
 def dataOrganizerBraves(year, BravesWins):
 
-    i = 0
-    df = pd.read_csv("upload/Braves/AtlBraves{}.csv".format(year), header=None)
-    row = df.tail(1)
-    BravesData = row.values.tolist()
-    NewList = list(chain.from_iterable(BravesData))
-    NewList.extend(BravesWins[i])
-    BravesWins.remove(BravesWins[i])
-    NewList.pop(0)
-    NewList.pop(16)
-    BravesDict = {year: NewList}
-
-    return BravesDict
+    if os.path.isfile("upload/Braves/AtlBraves{}.csv".format(year)):
+        i = 0
+        df = pd.read_csv("upload/Braves/AtlBraves{}.csv".format(year), header=None)
+        row = df.tail(1)
+        BravesData = row.values.tolist()
+        NewList = list(chain.from_iterable(BravesData))
+        NewList.extend(BravesWins[i])
+        BravesWins.remove(BravesWins[i])
+        NewList.pop(0)
+        NewList.pop(16)
+        BravesDict = {year: NewList}
+        return BravesDict
+    else:
+        print("The csv files you are trying to access for Braves", year, "do not exist. Please try something else.")
+        main()
 
 def dataStoreBraves(BravesTotalData, year, variables, path):
     df = pd.DataFrame.from_dict(BravesTotalData, orient="index")
@@ -92,18 +102,21 @@ def dataStoreBraves(BravesTotalData, year, variables, path):
 
 def dataOrganizerBrewers(year, BrewersWin):
 
-    i = 0
-    df = pd.read_csv("upload/Brewers/MilBrew{}.csv".format(year), header=None)
-    row = df.tail(1)
-    BrewersData = row.values.tolist()
-    NewList = list(chain.from_iterable(BrewersData))
-    NewList.extend(BrewersWin[i])
-    BrewersWin.remove(BrewersWin[i])
-    NewList.pop(0)
-    NewList.pop(16)
-    BrewersDict = {year: NewList}
-
-    return BrewersDict
+    if os.path.isfile("upload/Brewers/MilBrew{}.csv".format(year)):
+        i = 0
+        df = pd.read_csv("upload/Brewers/MilBrew{}.csv".format(year), header=None)
+        row = df.tail(1)
+        BrewersData = row.values.tolist()
+        NewList = list(chain.from_iterable(BrewersData))
+        NewList.extend(BrewersWin[i])
+        BrewersWin.remove(BrewersWin[i])
+        NewList.pop(0)
+        NewList.pop(16)
+        BrewersDict = {year: NewList}
+        return BrewersDict
+    else:
+        print("The csv files you are trying to access for Brewers", year, "do not exist. Please try something else.")
+        main()
 
 def dataStoreBrewers(BrewersTotalData, year, variables, path):
     df = pd.DataFrame.from_dict(BrewersTotalData, orient="index")
@@ -116,18 +129,21 @@ def dataStoreBrewers(BrewersTotalData, year, variables, path):
 
 def dataOrganizerCubs(year, CubsWins):
 
-    i = 0
-    df = pd.read_csv("upload/Cubs/ChicCubs{}.csv".format(year), header=None)
-    row = df.tail(1)
-    CubsData = row.values.tolist()
-    NewList = list(chain.from_iterable(CubsData))
-    NewList.extend(CubsWins[i])
-    CubsWins.remove(CubsWins[i])
-    NewList.pop(0)
-    NewList.pop(16)
-    CubsDict = {year: NewList}
-
-    return CubsDict
+    if os.path.isfile("upload/Cubs/ChicCubs{}.csv".format(year)):
+        i = 0
+        df = pd.read_csv("upload/Cubs/ChicCubs{}.csv".format(year), header=None)
+        row = df.tail(1)
+        CubsData = row.values.tolist()
+        NewList = list(chain.from_iterable(CubsData))
+        NewList.extend(CubsWins[i])
+        CubsWins.remove(CubsWins[i])
+        NewList.pop(0)
+        NewList.pop(16)
+        CubsDict = {year: NewList}
+        return CubsDict
+    else:
+        print("The csv files you are trying to access for Cubs", year, "do not exist. Please try something else.")
+        main()
 
 def dataStoreCubs(CubsTotalData, year, variables, path):
     df = pd.DataFrame.from_dict(CubsTotalData, orient="index")
@@ -140,18 +156,21 @@ def dataStoreCubs(CubsTotalData, year, variables, path):
 
 def dataOrganizerDBacks(year, DBacksWins):
 
-    i = 0
-    df = pd.read_csv("upload/DBacks/AriDBacks{}.csv".format(year), header=None)
-    row = df.tail(1)
-    DBacksData = row.values.tolist()
-    NewList = list(chain.from_iterable(DBacksData))
-    NewList.extend(DBacksWins[i])
-    DBacksWins.remove(DBacksWins[i])
-    NewList.pop(0)
-    NewList.pop(16)
-    DBacksDict = {year: NewList}
-
-    return DBacksDict
+    if os.path.isfile("upload/DBacks/AriDBacks{}.csv".format(year)):
+        i = 0
+        df = pd.read_csv("upload/DBacks/AriDBacks{}.csv".format(year), header=None)
+        row = df.tail(1)
+        DBacksData = row.values.tolist()
+        NewList = list(chain.from_iterable(DBacksData))
+        NewList.extend(DBacksWins[i])
+        DBacksWins.remove(DBacksWins[i])
+        NewList.pop(0)
+        NewList.pop(16)
+        DBacksDict = {year: NewList}
+        return DBacksDict
+    else:
+        print("The csv files you are trying to access for DBacks", year, "do not exist. Please try something else.")
+        main()
 
 def dataStoreDBacks(DBacksTotalData, year, variables, path):
     df = pd.DataFrame.from_dict(DBacksTotalData, orient="index")
@@ -164,18 +183,21 @@ def dataStoreDBacks(DBacksTotalData, year, variables, path):
 
 def dataOrganizerGiants(year, GiantsWins):
 
-    i = 0
-    df = pd.read_csv("upload/Giants/SfGiants{}.csv".format(year), header=None)
-    row = df.tail(1)
-    GiantsData = row.values.tolist()
-    NewList = list(chain.from_iterable(GiantsData))
-    NewList.extend(GiantsWins[i])
-    GiantsWins.remove(GiantsWins[i])
-    NewList.pop(0)
-    NewList.pop(16)
-    GiantsDict = {year: NewList}
-
-    return GiantsDict
+    if os.path.isfile("upload/Giants/SfGiants{}.csv".format(year)):
+        i = 0
+        df = pd.read_csv("upload/Giants/SfGiants{}.csv".format(year), header=None)
+        row = df.tail(1)
+        GiantsData = row.values.tolist()
+        NewList = list(chain.from_iterable(GiantsData))
+        NewList.extend(GiantsWins[i])
+        GiantsWins.remove(GiantsWins[i])
+        NewList.pop(0)
+        NewList.pop(16)
+        GiantsDict = {year: NewList}
+        return GiantsDict
+    else:
+        print("The csv files you are trying to access for Giants", year, "do not exist. Please try something else.")
+        main()
 
 def dataStoreGiants(GiantsTotalData, year, variables, path):
     df = pd.DataFrame.from_dict(GiantsTotalData, orient="index")
@@ -188,18 +210,21 @@ def dataStoreGiants(GiantsTotalData, year, variables, path):
 
 def dataOrganizerMets(year, MetsWins):
 
-    i = 0
-    df = pd.read_csv("upload/Mets/NYMets{}.csv".format(year), header=None)
-    row = df.tail(1)
-    MetsData = row.values.tolist()
-    NewList = list(chain.from_iterable(MetsData))
-    NewList.extend(MetsWins[i])
-    MetsWins.remove(MetsWins[i])
-    NewList.pop(0)
-    NewList.pop(16)
-    MetsDict = {year: NewList}
-
-    return MetsDict
+    if os.path.isfile("upload/Mets/NYMets{}.csv".format(year)):
+        i = 0
+        df = pd.read_csv("upload/Mets/NYMets{}.csv".format(year), header=None)
+        row = df.tail(1)
+        MetsData = row.values.tolist()
+        NewList = list(chain.from_iterable(MetsData))
+        NewList.extend(MetsWins[i])
+        MetsWins.remove(MetsWins[i])
+        NewList.pop(0)
+        NewList.pop(16)
+        MetsDict = {year: NewList}
+        return MetsDict
+    else:
+        print("The csv files you are trying to access for Mets", year, "do not exist. Please try something else.")
+        main()
 
 def dataStoreMets(MetsTotalData, year, variables, path):
     df = pd.DataFrame.from_dict(MetsTotalData, orient="index")
@@ -212,18 +237,21 @@ def dataStoreMets(MetsTotalData, year, variables, path):
 
 def dataOrganizerPadres(year, PadresWins):
 
-    i = 0
-    df = pd.read_csv("upload/Padres/SdPadres{}.csv".format(year), header=None)
-    row = df.tail(1)
-    PadresData = row.values.tolist()
-    NewList = list(chain.from_iterable(PadresData))
-    NewList.extend(PadresWins[i])
-    PadresWins.remove(PadresWins[i])
-    NewList.pop(0)
-    NewList.pop(16)
-    PadresDict = {year: NewList}
-
-    return PadresDict
+    if os.path.isfile("upload/Padres/SdPadres{}.csv".format(year)):
+        i = 0
+        df = pd.read_csv("upload/Padres/SdPadres{}.csv".format(year), header=None)
+        row = df.tail(1)
+        PadresData = row.values.tolist()
+        NewList = list(chain.from_iterable(PadresData))
+        NewList.extend(PadresWins[i])
+        PadresWins.remove(PadresWins[i])
+        NewList.pop(0)
+        NewList.pop(16)
+        PadresDict = {year: NewList}
+        return PadresDict
+    else:
+        print("The csv files you are trying to access for Padres", year, "do not exist. Please try something else.")
+        main()
 
 def dataStorePadres(PadresTotalData, year, variables, path):
     df = pd.DataFrame.from_dict(PadresTotalData, orient="index")
@@ -236,18 +264,21 @@ def dataStorePadres(PadresTotalData, year, variables, path):
 
 def dataOrganizerPhillies(year, PhilliesWins):
 
-    i = 0
-    df = pd.read_csv("upload/Phillies/PhiPhil{}.csv".format(year), header=None)
-    row = df.tail(1)
-    PhilliesData = row.values.tolist()
-    NewList = list(chain.from_iterable(PhilliesData))
-    NewList.extend(PhilliesWins[i])
-    PhilliesWins.remove(PhilliesWins[i])
-    NewList.pop(0)
-    NewList.pop(16)
-    PhilliesDict = {year: NewList}
-
-    return PhilliesDict
+    if os.path.isfile("upload/Phillies/PhiPhil{}.csv".format(year)):
+        i = 0
+        df = pd.read_csv("upload/Phillies/PhiPhil{}.csv".format(year), header=None)
+        row = df.tail(1)
+        PhilliesData = row.values.tolist()
+        NewList = list(chain.from_iterable(PhilliesData))
+        NewList.extend(PhilliesWins[i])
+        PhilliesWins.remove(PhilliesWins[i])
+        NewList.pop(0)
+        NewList.pop(16)
+        PhilliesDict = {year: NewList}
+        return PhilliesDict
+    else:
+        print("The csv files you are trying to access for Phillies", year, "do not exist. Please try something else.")
+        main()
 
 def dataStorePhillies(PhilliesTotalData, year, variables, path):
     df = pd.DataFrame.from_dict(PhilliesTotalData, orient="index")
@@ -260,18 +291,21 @@ def dataStorePhillies(PhilliesTotalData, year, variables, path):
 
 def dataOrganizerPirates(year, PiratesWins):
 
-    i = 0
-    df = pd.read_csv("upload/Pirates/PitPirate{}.csv".format(year), header=None)
-    row = df.tail(1)
-    PiratesData = row.values.tolist()
-    NewList = list(chain.from_iterable(PiratesData))
-    NewList.extend(PiratesWins[i])
-    PiratesWins.remove(PiratesWins[i])
-    NewList.pop(0)
-    NewList.pop(16)
-    PiratesDict = {year: NewList}
-
-    return PiratesDict
+    if os.path.isfile("upload/Pirates/PitPirate{}.csv".format(year)):
+        i = 0
+        df = pd.read_csv("upload/Pirates/PitPirate{}.csv".format(year), header=None)
+        row = df.tail(1)
+        PiratesData = row.values.tolist()
+        NewList = list(chain.from_iterable(PiratesData))
+        NewList.extend(PiratesWins[i])
+        PiratesWins.remove(PiratesWins[i])
+        NewList.pop(0)
+        NewList.pop(16)
+        PiratesDict = {year: NewList}
+        return PiratesDict
+    else:
+        print("The csv files you are trying to access for Pirates", year, "do not exist. Please try something else.")
+        main()
 
 def dataStorePirates(PiratesTotalData, year, variables, path):
     df = pd.DataFrame.from_dict(PiratesTotalData, orient="index")
@@ -284,18 +318,21 @@ def dataStorePirates(PiratesTotalData, year, variables, path):
 
 def dataOrganizerRockies(year, RockiesWins):
 
-    i = 0
-    df = pd.read_csv("upload/Rockies/ColRockies{}.csv".format(year), header=None)
-    row = df.tail(1)
-    RockiesData = row.values.tolist()
-    NewList = list(chain.from_iterable(RockiesData))
-    NewList.extend(RockiesWins[i])
-    RockiesWins.remove(RockiesWins[i])
-    NewList.pop(0)
-    NewList.pop(16)
-    RockiesDict = {year: NewList}
-
-    return RockiesDict
+    if os.path.isfile("upload/Rockies/ColRockies{}.csv".format(year)):
+        i = 0
+        df = pd.read_csv("upload/Rockies/ColRockies{}.csv".format(year), header=None)
+        row = df.tail(1)
+        RockiesData = row.values.tolist()
+        NewList = list(chain.from_iterable(RockiesData))
+        NewList.extend(RockiesWins[i])
+        RockiesWins.remove(RockiesWins[i])
+        NewList.pop(0)
+        NewList.pop(16)
+        RockiesDict = {year: NewList}
+        return RockiesDict
+    else:
+        print("The csv files you are trying to access for Rockies", year, "do not exist. Please try something else.")
+        main()
 
 def dataStoreRockies(RockiesTotalData, year, variables, path):
     df = pd.DataFrame.from_dict(RockiesTotalData, orient="index")
@@ -305,9 +342,6 @@ def dataStoreRockies(RockiesTotalData, year, variables, path):
     else:
         df.to_csv("upload/RockiesData{}.csv".format(year), header = variables)
         print("Successfully uploaded to:", path)
-#def dataStoreAllData(TotalData):
-    #df = pd.DataFrame.from_dict(TotalData, orient="index")
-    #df.to_csv("upload/TotalData.csv")
 
 def main():
 
@@ -336,8 +370,25 @@ def main():
     PiratesWins = [['72'],['75'],['72'],['67'],['67'],['68'],['67'],['62'],['57'],['72'],['79'],['94'],['88'],['98'],['78'],['75'],['82'],['69']]
     RockiesWins = [['73'],['74'],['68'],['67'],['76'],['90'],['74'],['92'],['83'],['73'],['64'],['74'],['66'],['68'],['75'],['87'],['91'],['71']]
 
-    user_input = input("Enter a year to start collecting data from 2002-2019:")
-    year = int(user_input)
+    while True:
+        while True:
+            try:
+                year = int(input("Enter a year to start collecting data from 2002-2019:"))
+                yearEnd = int(input("Enter a year to stop collecting data from that is later than the previous year selected:"))
+                if year <= yearEnd:
+                    break
+                else:
+                    print("The year to stop collecting data is not later than the year to start, Please reselect years.")
+            except ValueError:
+                print('You entered a non integer value, try again.')
+                continue
+        if year >= 2002 and year <= 2019:
+            if yearEnd >= 2002 and yearEnd <= 2019:
+                break
+            else:
+                print("Invalid ending year, try again.")
+        else:
+            print("Invalid starting year, try again.")
 
     RedsTotalData = {}
     CardsTotalData = {}
@@ -353,58 +404,156 @@ def main():
     RockiesTotalData = {}
     TotalData = {}
 
-    while year <= 2019:
-        RedsDict = dataOrganizerReds(year, RedsWins)
-        RedsTotalData.update(RedsDict)
+    while True:
+        user_choice = input("Would you like to collect data for every team, Yes or No:")
+        selection = user_choice.lower()
+        if selection == "yes":
+            while year <= yearEnd:
+                RedsDict = dataOrganizerReds(year, RedsWins)
+                RedsTotalData.update(RedsDict)
 
-        CardsDict = dataOrganizerCards(year, CardsWins)
-        CardsTotalData.update(CardsDict)
+                CardsDict = dataOrganizerCards(year, CardsWins)
+                CardsTotalData.update(CardsDict)
 
-        BravesDict = dataOrganizerBraves(year, BravesWins)
-        BravesTotalData.update(BravesDict)
+                BravesDict = dataOrganizerBraves(year, BravesWins)
+                BravesTotalData.update(BravesDict)
 
-        BrewersDict = dataOrganizerBrewers(year, BrewersWin)
-        BrewersTotalData.update(BrewersDict)
+                BrewersDict = dataOrganizerBrewers(year, BrewersWin)
+                BrewersTotalData.update(BrewersDict)
 
-        CubsDict = dataOrganizerCubs(year, CubsWins)
-        CubsTotalData.update(CubsDict)
+                CubsDict = dataOrganizerCubs(year, CubsWins)
+                CubsTotalData.update(CubsDict)
 
-        DBacksDict = dataOrganizerDBacks(year, DBacksWins)
-        DBacksTotalData.update(DBacksDict)
+                DBacksDict = dataOrganizerDBacks(year, DBacksWins)
+                DBacksTotalData.update(DBacksDict)
 
-        GiantsDict = dataOrganizerGiants(year, GiantsWins)
-        GiantsTotalData.update(GiantsDict)
+                GiantsDict = dataOrganizerGiants(year, GiantsWins)
+                GiantsTotalData.update(GiantsDict)
 
-        MetsDict = dataOrganizerMets(year, MetsWins)
-        MetsTotalData.update(MetsDict)
+                MetsDict = dataOrganizerMets(year, MetsWins)
+                MetsTotalData.update(MetsDict)
 
-        PadresDict = dataOrganizerPadres(year, PadresWins)
-        PadresTotalData.update(PadresDict)
+                PadresDict = dataOrganizerPadres(year, PadresWins)
+                PadresTotalData.update(PadresDict)
 
-        PhilliesDict = dataOrganizerPhillies(year, PhilliesWins)
-        PhilliesTotalData.update(PhilliesDict)
+                PhilliesDict = dataOrganizerPhillies(year, PhilliesWins)
+                PhilliesTotalData.update(PhilliesDict)
 
-        PiratesDict = dataOrganizerPirates(year, PiratesWins)
-        PiratesTotalData.update(PiratesDict)
+                PiratesDict = dataOrganizerPirates(year, PiratesWins)
+                PiratesTotalData.update(PiratesDict)
 
-        RockiesDict = dataOrganizerRockies(year, RockiesWins)
-        RockiesTotalData.update(RockiesDict)
+                RockiesDict = dataOrganizerRockies(year, RockiesWins)
+                RockiesTotalData.update(RockiesDict)
 
-        year = year + 1
+                year = year + 1
 
-    dataStoreReds(RedsTotalData, year, variables, path)
-    dataStoreCards(CardsTotalData, year, variables, path)
-    dataStoreBraves(BravesTotalData, year, variables, path)
-    dataStoreBrewers(BrewersTotalData, year, variables, path)
-    dataStoreCubs(CubsTotalData, year, variables, path)
-    dataStoreDBacks(DBacksTotalData, year, variables, path)
-    dataStoreGiants(GiantsTotalData, year, variables, path)
-    dataStoreMets(MetsTotalData, year, variables, path)
-    dataStorePadres(PadresTotalData, year, variables, path)
-    dataStorePhillies(PhilliesTotalData, year, variables, path)
-    dataStorePirates(PiratesTotalData, year, variables, path)
-    dataStoreRockies(RockiesTotalData, year, variables, path)
+            dataStoreReds(RedsTotalData, year, variables, path)
+            dataStoreCards(CardsTotalData, year, variables, path)
+            dataStoreBraves(BravesTotalData, year, variables, path)
+            dataStoreBrewers(BrewersTotalData, year, variables, path)
+            dataStoreCubs(CubsTotalData, year, variables, path)
+            dataStoreDBacks(DBacksTotalData, year, variables, path)
+            dataStoreGiants(GiantsTotalData, year, variables, path)
+            dataStoreMets(MetsTotalData, year, variables, path)
+            dataStorePadres(PadresTotalData, year, variables, path)
+            dataStorePhillies(PhilliesTotalData, year, variables, path)
+            dataStorePirates(PiratesTotalData, year, variables, path)
+            dataStoreRockies(RockiesTotalData, year, variables, path)
+            break
 
+        elif selection == "no":
+            user_selection = input("Select a team data to collect from the following: Braves, Brewers, Cardinals, Cubs, DBacks, Giants, Mets, Padres, Phillies, Pirates, Reds, or Rockies:")
+            team_selection = user_selection.lower()
+            if team_selection == "braves":
+                while year <= yearEnd:
+                    BravesDict = dataOrganizerBraves(year, BravesWins)
+                    BravesTotalData.update(BravesDict)
+                    year = year + 1
+                dataStoreBraves(BravesTotalData, year, variables, path)
+                break
+            elif team_selection == "brewers":
+                while year <= yearEnd:
+                    BrewersDict = dataOrganizerBrewers(year, BrewersWin)
+                    BrewersTotalData.update(BrewersDict)
+                    year = year + 1
+                dataStoreBrewers(BrewersTotalData, year, variables, path)
+                break
+            elif team_selection == "cardinals":
+                while year <= yearEnd:
+                    CardsDict = dataOrganizerCards(year, CardsWins)
+                    CardsTotalData.update(CardsDict)
+                    year = year + 1
+                dataStoreCards(CardsTotalData, year, variables, path)
+                break
+            elif team_selection == "cubs":
+                while year <= yearEnd:
+                    CubsDict = dataOrganizerCubs(year, CubsWins)
+                    CubsTotalData.update(CubsDict)
+                    year = year + 1
+                dataStoreCubs(CubsTotalData, year, variables, path)
+                break
+            elif team_selection == "dbacks":
+                while year <= yearEnd:
+                    DBacksDict = dataOrganizerDBacks(year, DBacksWins)
+                    DBacksTotalData.update(DBacksDict)
+                    year = year + 1
+                dataStoreDBacks(DBacksTotalData, year, variables, path)
+                break
+            elif team_selection == "giants":
+                while year <= yearEnd:
+                    GiantsDict = dataOrganizerGiants(year, GiantsWins)
+                    GiantsTotalData.update(GiantsDict)
+                    year = year + 1
+                dataStoreGiants(GiantsTotalData, year, variables, path)
+                break
+            elif team_selection == "mets":
+                while year <= yearEnd:
+                    MetsDict = dataOrganizerMets(year, MetsWins)
+                    MetsTotalData.update(MetsDict)
+                    year = year + 1
+                dataStoreMets(MetsTotalData, year, variables, path)
+                break
+            elif team_selection == "padres":
+                while year <= yearEnd:
+                    PadresDict = dataOrganizerPadres(year, PadresWins)
+                    PadresTotalData.update(PadresDict)
+                    year = year + 1
+                dataStorePadres(PadresTotalData, year, variables, path)
+                break
+            elif team_selection == "phillies":
+                while year <= yearEnd:
+                    PhilliesDict = dataOrganizerPhillies(year, PhilliesWins)
+                    PhilliesTotalData.update(PhilliesDict)
+                    year = year + 1
+                dataStorePhillies(PhilliesTotalData, year, variables, path)
+                break
+            elif team_selection == "pirates":
+                while year <= yearEnd:
+                    PiratesDict = dataOrganizerPirates(year, PiratesWins)
+                    PiratesTotalData.update(PiratesDict)
+                    year = year + 1
+                dataStorePirates(PiratesTotalData, year, variables, path)
+                break
+            elif team_selection == "reds":
+                while year <= yearEnd:
+                    RedsDict = dataOrganizerReds(year, RedsWins)
+                    RedsTotalData.update(RedsDict)
+                    year = year + 1
+                dataStoreReds(RedsTotalData, year, variables, path)
+                break
+            elif team_selection == "rockies":
+                while year <= yearEnd:
+                    RockiesDict = dataOrganizerRockies(year, RockiesWins)
+                    RockiesTotalData.update(RockiesDict)
+                    year = year + 1
+                dataStoreRockies(RockiesTotalData, year, variables, path)
+                break
+            else:
+                print("Invalid team selected, rerun and try again.")
+                continue
+        else:
+            print("Please run again as an inproper selection was made.")
+            continue
 
 if __name__ == '__main__':
     main()

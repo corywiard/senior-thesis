@@ -734,14 +734,21 @@ def main():
         while True:
             try:
                 year = int(input("Enter a year to start collecting data from 2002-2019:"))
-                break
+                yearEnd = int(input("Enter a year to stop collecting data from that is later than the previous year selected:"))
+                if year <= yearEnd:
+                    break
+                else:
+                    print("The year to stop collecting data is not later than the year to start, Please reselect years.")
             except ValueError:
                 print('You entered a non integer value, try again.')
                 continue
         if year >= 2002 and year <= 2019:
-            break
+            if yearEnd >= 2002 and yearEnd <= 2019:
+                break
+            else:
+                print("Invalid ending year, try again.")
         else:
-            print("Invalid year, try again.")
+            print("Invalid starting year, try again.")
 
     variables = variableNameCollector(year)
 
@@ -749,7 +756,7 @@ def main():
         user_choice = input("Would you like to collect data for every team, Yes or No:")
         selection = user_choice.lower()
         if selection == "yes":
-            while year <= 2019:
+            while year <= yearEnd:
                 names_dict_braves = dataCollectorBraves(year, variables)
                 data_store_csv_Braves(year, names_dict_braves, path)
 
@@ -792,73 +799,73 @@ def main():
             user_selection = input("Select a team data to collect from the following: Braves, Brewers, Cardinals, Cubs, DBacks, Giants, Mets, Padres, Phillies, Pirates, Reds, or Rockies:")
             team_selection = user_selection.lower()
             if team_selection == "braves":
-                while year <= 2019:
+                while year <= yearEnd:
                     names_dict_braves = dataCollectorBraves(year, variables)
                     data_store_csv_Braves(year, names_dict_braves, path)
                     year = year + 1
                 break
             elif team_selection == "brewers":
-                while year <= 2019:
+                while year <= yearEnd:
                     names_dict_brew = dataCollectorBrew(year, variables)
                     data_store_csv_Brew(year, names_dict_brew, path)
                     year = year + 1
                 break
             elif team_selection == "cardinals":
-                while year <= 2019:
+                while year <= yearEnd:
                     names_dict_cards = dataCollectorCardinals(year, variables)
                     data_store_csv_Cards(year, names_dict_cards, path)
                     year = year + 1
                 break
             elif team_selection == "cubs":
-                while year <= 2019:
+                while year <= yearEnd:
                     names_dict_cubs = dataCollectorCubs(year, variables)
                     data_store_csv_Cubs(year, names_dict_cubs, path)
                     year = year + 1
                 break
             elif team_selection == "dbacks":
-                while year <= 2019:
+                while year <= yearEnd:
                     names_dict_dbacks = dataCollectorDBacks(year, variables)
                     data_store_csv_DBacks(year, names_dict_dbacks, path)
                     year = year + 1
                 break
             elif team_selection == "giants":
-                while year <= 2019:
+                while year <= yearEnd:
                     names_dict_giants = dataCollectorGiants(year, variables)
                     data_store_csv_Giants(year, names_dict_giants, path)
                     year = year + 1
                 break
             elif team_selection == "mets":
-                while year <= 2019:
+                while year <= yearEnd:
                     names_dict_mets = dataCollectorMets(year, variables)
                     data_store_csv_Mets(year, names_dict_mets, path)
                     year = year + 1
                 break
             elif team_selection == "padres":
-                while year <= 2019:
+                while year <= yearEnd:
                     names_dict_padres = dataCollectorPadres(year, variables)
                     data_store_csv_Padres(year, names_dict_padres, path)
                     year = year + 1
                 break
             elif team_selection == "phillies":
-                while year <= 2019:
+                while year <= yearEnd:
                     names_dict_phil = dataCollectorPhillies(year, variables)
                     data_store_csv_Phil(year, names_dict_phil, path)
                     year = year + 1
                 break
             elif team_selection == "pirates":
-                while year <= 2019:
+                while year <= yearEnd:
                     names_dict_pit = dataCollectorPirates(year, variables)
                     data_store_csv_Pit(year, names_dict_pit, path)
                     year = year + 1
                 break
             elif team_selection == "reds":
-                while year <= 2019:
+                while year <= yearEnd:
                     names_dict_reds = dataCollectorReds(year, variables)
                     data_store_csv_Reds(year, names_dict_reds, path)
                     year = year + 1
                 break
             elif team_selection == "rockies":
-                while year <= 2019:
+                while year <= yearEnd:
                     names_dict_rockies = dataCollectorRockies(year, variables)
                     data_store_csv_Rockies(year, names_dict_rockies, path)
                     year = year + 1
