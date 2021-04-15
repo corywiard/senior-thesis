@@ -402,7 +402,6 @@ def main():
     PhilliesTotalData = {}
     PiratesTotalData = {}
     RockiesTotalData = {}
-    TotalData = {}
 
     while True:
         user_choice = input("Would you like to collect data for every team, Yes or No:")
