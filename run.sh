@@ -1,3 +1,3 @@
 #!/bin/sh
-python3 DataCollection.py
-python3 DataOrganizer.py
+python3 src/DataCollection.py
+python3 src/DataOrganizer.py

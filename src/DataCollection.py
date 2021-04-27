@@ -12,7 +12,6 @@ from bs4 import BeautifulSoup
 import os
 
 
-
 def variableNameCollector(year):
     url = "https://www.espn.com/mlb/team/stats/_/name/cin/season/{}/seasontype/2".format(year)
     html = urlopen(url)

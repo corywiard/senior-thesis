@@ -6,17 +6,12 @@ AUTHOR = "Cory Wiard"
 AUTHORMAIL = "wiardc@allegheny.edu"
 
 
-#import numpy as np
-#import matplotlib.pyplot as plt
-
-
 import pandas as pd
 from urllib.request import urlopen
 from bs4 import BeautifulSoup
 from itertools import chain
 import os
-
-
+import DataCollection
 
 def dataOrganizerReds(year, RedsWins):
 
@@ -346,6 +341,7 @@ def dataStoreRockies(RockiesTotalData, year, variables, path):
 def main():
 
     path = os.getcwd()
+
     url = "https://www.espn.com/mlb/team/stats/_/name/phi/season/2002/seasontype/2"
     html = urlopen(url)
     soup = BeautifulSoup(html, "lxml")
@@ -353,7 +349,7 @@ def main():
     variables = []
     player_variables = soup.find('table', attrs={'class': 'Table Table--align-right'})
     for stats_variables in player_variables.find_all('th'):
-        variables.append(stats_variables.get_text())
+      variables.append(stats_variables.get_text())
     variables.pop(16)
     variables.append("Wins")
 
