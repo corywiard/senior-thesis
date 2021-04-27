@@ -373,12 +373,12 @@ def main():
     while True:
         while True:
             try:
-                year = int(input("Enter a year to start collecting data from 2002-2019:"))
-                yearEnd = int(input("Enter a year to stop collecting data from that is later than the previous year selected:"))
+                year = int(input("Enter a year to start organizing data from 2002-2019:"))
+                yearEnd = int(input("Enter a year to stop organizing data from that is later than the previous year selected:"))
                 if year <= yearEnd:
                     break
                 else:
-                    print("The year to stop collecting data is not later than the year to start, Please reselect years.")
+                    print("The year to stop organizing data is not later than the year to start, Please reselect years.")
             except ValueError:
                 print('You entered a non integer value, try again.')
                 continue
@@ -404,7 +404,7 @@ def main():
     RockiesTotalData = {}
 
     while True:
-        user_choice = input("Would you like to collect data for every team, Yes or No:")
+        user_choice = input("Would you like to organize data for every team, Yes or No:")
         selection = user_choice.lower()
         if selection == "yes":
             while year <= yearEnd:
