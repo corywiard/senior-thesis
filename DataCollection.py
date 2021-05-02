@@ -725,8 +725,18 @@ def CreateDirectory(path):
     else:
         print ("Successfully created the directory %s " % path)
 
+    path = oldPath
+    path = path + "/Totals"
+    try:
+        os.mkdir(path)
+    except OSError:
+        print ("The directory %s already exist" % path)
+    else:
+        print ("Successfully created the directory %s " % path)
+
 def main():
     path = os.getcwd()
+    print(path)
     CreateDirectory(path)
 
     while True:

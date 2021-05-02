@@ -11,7 +11,8 @@ from urllib.request import urlopen
 from bs4 import BeautifulSoup
 from itertools import chain
 import os
-import DataCollection
+import glob
+
 
 def dataOrganizerReds(year, RedsWins):
 
@@ -34,11 +35,11 @@ def dataOrganizerReds(year, RedsWins):
 
 def dataStoreReds(RedsTotalData, year, variables, path):
     df = pd.DataFrame.from_dict(RedsTotalData, orient="index")
-    path = path + "/upload/RedsData{}.csv".format(year)
-    if os.path.isfile("upload/RedsData{}.csv".format(year)):
+    path = path + "/upload/Totals/RedsData{}.csv".format(year)
+    if os.path.isfile("upload/Totals/RedsData{}.csv".format(year)):
         print(path, "already exist")
     else:
-        df.to_csv("upload/RedsData{}.csv".format(year), header = variables)
+        df.to_csv("upload/Totals/RedsData{}.csv".format(year), header = variables)
         print("Successfully uploaded to:", path)
 
 def dataOrganizerCards(year, CardsWins):
@@ -61,11 +62,11 @@ def dataOrganizerCards(year, CardsWins):
 
 def dataStoreCards(CardsTotalData, year, variables, path):
     df = pd.DataFrame.from_dict(CardsTotalData, orient="index")
-    path = path + "/upload/CardsData{}.csv".format(year)
-    if os.path.isfile("upload/CardsData{}.csv".format(year)):
+    path = path + "/upload/Totals/CardsData{}.csv".format(year)
+    if os.path.isfile("upload/Totals/CardsData{}.csv".format(year)):
         print(path, "already exist")
     else:
-        df.to_csv("upload/CardsData{}.csv".format(year), header = variables)
+        df.to_csv("upload/Totals/CardsData{}.csv".format(year), header = variables)
         print("Successfully uploaded to:", path)
 
 def dataOrganizerBraves(year, BravesWins):
@@ -88,11 +89,11 @@ def dataOrganizerBraves(year, BravesWins):
 
 def dataStoreBraves(BravesTotalData, year, variables, path):
     df = pd.DataFrame.from_dict(BravesTotalData, orient="index")
-    path = path + "/upload/BravesData{}.csv".format(year)
-    if os.path.isfile("upload/BravesData{}.csv".format(year)):
+    path = path + "/upload/Totals/BravesData{}.csv".format(year)
+    if os.path.isfile("upload/Totals/BravesData{}.csv".format(year)):
         print(path, "already exist")
     else:
-        df.to_csv("upload/BravesData{}.csv".format(year), header = variables)
+        df.to_csv("upload/Totals/BravesData{}.csv".format(year), header = variables)
         print("Successfully uploaded to:", path)
 
 def dataOrganizerBrewers(year, BrewersWin):
@@ -115,11 +116,11 @@ def dataOrganizerBrewers(year, BrewersWin):
 
 def dataStoreBrewers(BrewersTotalData, year, variables, path):
     df = pd.DataFrame.from_dict(BrewersTotalData, orient="index")
-    path = path + "/upload/BrewersData{}.csv".format(year)
-    if os.path.isfile("upload/BrewersData{}.csv".format(year)):
+    path = path + "/upload/Totals/BrewersData{}.csv".format(year)
+    if os.path.isfile("upload/Totals/BrewersData{}.csv".format(year)):
         print(path, "already exist")
     else:
-        df.to_csv("upload/BrewersData{}.csv".format(year), header = variables)
+        df.to_csv("upload/Totals/BrewersData{}.csv".format(year), header = variables)
         print("Successfully uploaded to:", path)
 
 def dataOrganizerCubs(year, CubsWins):
@@ -142,11 +143,11 @@ def dataOrganizerCubs(year, CubsWins):
 
 def dataStoreCubs(CubsTotalData, year, variables, path):
     df = pd.DataFrame.from_dict(CubsTotalData, orient="index")
-    path = path + "/upload/CubsData{}.csv".format(year)
-    if os.path.isfile("upload/CubsData{}.csv".format(year)):
+    path = path + "/upload/Totals/CubsData{}.csv".format(year)
+    if os.path.isfile("upload/Totals/CubsData{}.csv".format(year)):
         print(path, "already exist")
     else:
-        df.to_csv("upload/CubsData{}.csv".format(year), header = variables)
+        df.to_csv("upload/Totals/CubsData{}.csv".format(year), header = variables)
         print("Successfully uploaded to:", path)
 
 def dataOrganizerDBacks(year, DBacksWins):
@@ -169,11 +170,11 @@ def dataOrganizerDBacks(year, DBacksWins):
 
 def dataStoreDBacks(DBacksTotalData, year, variables, path):
     df = pd.DataFrame.from_dict(DBacksTotalData, orient="index")
-    path = path + "/upload/DBacksData{}.csv".format(year)
-    if os.path.isfile("upload/DBacksData{}.csv".format(year)):
+    path = path + "/upload/Totals/DBacksData{}.csv".format(year)
+    if os.path.isfile("upload/Totals/DBacksData{}.csv".format(year)):
         print(path, "already exist")
     else:
-        df.to_csv("upload/DBacksData{}.csv".format(year), header = variables)
+        df.to_csv("upload/Totals/DBacksData{}.csv".format(year), header = variables)
         print("Successfully uploaded to:", path)
 
 def dataOrganizerGiants(year, GiantsWins):
@@ -196,11 +197,11 @@ def dataOrganizerGiants(year, GiantsWins):
 
 def dataStoreGiants(GiantsTotalData, year, variables, path):
     df = pd.DataFrame.from_dict(GiantsTotalData, orient="index")
-    path = path + "/upload/GiantsData{}.csv".format(year)
-    if os.path.isfile("upload/GiantsData{}.csv".format(year)):
+    path = path + "/upload/Totals/GiantsData{}.csv".format(year)
+    if os.path.isfile("upload/Totals/GiantsData{}.csv".format(year)):
         print(path, "already exist")
     else:
-        df.to_csv("upload/GiantsData{}.csv".format(year), header = variables)
+        df.to_csv("upload/Totals/GiantsData{}.csv".format(year), header = variables)
         print("Successfully uploaded to:", path)
 
 def dataOrganizerMets(year, MetsWins):
@@ -223,11 +224,11 @@ def dataOrganizerMets(year, MetsWins):
 
 def dataStoreMets(MetsTotalData, year, variables, path):
     df = pd.DataFrame.from_dict(MetsTotalData, orient="index")
-    path = path + "/upload/MetsData{}.csv".format(year)
-    if os.path.isfile("upload/MetsData{}.csv".format(year)):
+    path = path + "/upload/Totals/MetsData{}.csv".format(year)
+    if os.path.isfile("upload/Totals/MetsData{}.csv".format(year)):
         print(path, "already exist")
     else:
-        df.to_csv("upload/MetsData{}.csv".format(year), header = variables)
+        df.to_csv("upload/Totals/MetsData{}.csv".format(year), header = variables)
         print("Successfully uploaded to:", path)
 
 def dataOrganizerPadres(year, PadresWins):
@@ -250,11 +251,11 @@ def dataOrganizerPadres(year, PadresWins):
 
 def dataStorePadres(PadresTotalData, year, variables, path):
     df = pd.DataFrame.from_dict(PadresTotalData, orient="index")
-    path = path + "/upload/PadresData{}.csv".format(year)
-    if os.path.isfile("upload/PadresData{}.csv".format(year)):
+    path = path + "/upload/Totals/PadresData{}.csv".format(year)
+    if os.path.isfile("upload/Totals/PadresData{}.csv".format(year)):
         print(path, "already exist")
     else:
-        df.to_csv("upload/PadresData{}.csv".format(year), header = variables)
+        df.to_csv("upload/Totals/PadresData{}.csv".format(year), header = variables)
         print("Successfully uploaded to:", path)
 
 def dataOrganizerPhillies(year, PhilliesWins):
@@ -277,11 +278,11 @@ def dataOrganizerPhillies(year, PhilliesWins):
 
 def dataStorePhillies(PhilliesTotalData, year, variables, path):
     df = pd.DataFrame.from_dict(PhilliesTotalData, orient="index")
-    path = path + "/upload/PhilliesData{}.csv".format(year)
-    if os.path.isfile("upload/PhilliesData{}.csv".format(year)):
+    path = path + "/upload/Totals/PhilliesData{}.csv".format(year)
+    if os.path.isfile("upload/Totals/PhilliesData{}.csv".format(year)):
         print(path, "already exist")
     else:
-        df.to_csv("upload/PhilliesData{}.csv".format(year), header = variables)
+        df.to_csv("upload/Totals/PhilliesData{}.csv".format(year), header = variables)
         print("Successfully uploaded to:", path)
 
 def dataOrganizerPirates(year, PiratesWins):
@@ -304,11 +305,11 @@ def dataOrganizerPirates(year, PiratesWins):
 
 def dataStorePirates(PiratesTotalData, year, variables, path):
     df = pd.DataFrame.from_dict(PiratesTotalData, orient="index")
-    path = path + "/upload/PiratesData{}.csv".format(year)
-    if os.path.isfile("upload/PiratesData{}.csv".format(year)):
+    path = path + "/upload/Totals/PiratesData{}.csv".format(year)
+    if os.path.isfile("upload/Totals/PiratesData{}.csv".format(year)):
         print(path, "already exist")
     else:
-        df.to_csv("upload/PiratesData{}.csv".format(year), header = variables)
+        df.to_csv("upload/Totals/PiratesData{}.csv".format(year), header = variables)
         print("Successfully uploaded to:", path)
 
 def dataOrganizerRockies(year, RockiesWins):
@@ -331,12 +332,23 @@ def dataOrganizerRockies(year, RockiesWins):
 
 def dataStoreRockies(RockiesTotalData, year, variables, path):
     df = pd.DataFrame.from_dict(RockiesTotalData, orient="index")
-    path = path + "/upload/RockiesData{}.csv".format(year)
-    if os.path.isfile("upload/RockiesData{}.csv".format(year)):
+    path = path + "/upload/Totals/RockiesData{}.csv".format(year)
+    if os.path.isfile("upload/Totals/RockiesData{}.csv".format(year)):
         print(path, "already exist")
     else:
-        df.to_csv("upload/RockiesData{}.csv".format(year), header = variables)
+        df.to_csv("upload/Totals/RockiesData{}.csv".format(year), header = variables)
         print("Successfully uploaded to:", path)
+
+def totalData(path):
+    path = path + "/upload/Totals/"
+    all_files = glob.glob(path + "/*.csv")
+    li = []
+    i = 0
+    for filename in all_files:
+        df = pd.read_csv(filename, index_col=None, header=0)
+        li.append(df)
+    frame = pd.concat(li, axis=0, ignore_index=True)
+    frame.to_csv("upload/TotalData.csv")
 
 def main():
 
@@ -548,6 +560,19 @@ def main():
                 continue
         else:
             print("Please run again as an inproper selection was made.")
+            continue
+
+    while True:
+        user_choice = input("Would you like to combine data for every team, Yes or No:")
+        selection = user_choice.lower()
+        if selection == "yes":
+            totalData(path)
+            break
+        elif selection == "no":
+            print("The tool is completed.")
+            break
+        else:
+            print("Wrong input, please try again.")
             continue
 
 if __name__ == '__main__':

@@ -2,7 +2,9 @@
 library(readr)
 library(tidyverse)
 
-var = readline(prompt = "Enter any number : ");
+var <- readline(prompt = "Enter any number : ");
+
+print(var)
 
 Braves <- read_csv("/Users/corywiard/desktop/Comp/senior-thesis/upload/BravesData2020.csv")
 model <- lm(data = Braves, Wins ~ GP + AB + R + H + TB + SB + AVG + OBP + SLG)
