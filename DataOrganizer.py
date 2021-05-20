@@ -16,16 +16,20 @@ import glob
 
 def dataOrganizerReds(year, RedsWins):
 
+    # checks to makre sure file exist
     if os.path.isfile("upload/Reds/cincyReds{}.csv".format(year)):
         i = 0
+        # reads in csv files
         df = pd.read_csv("upload/Reds/cincyReds{}.csv".format(year), header=None)
         row = df.tail(1)
         RedsData = row.values.tolist()
         NewList = list(chain.from_iterable(RedsData))
         NewList.extend(RedsWins[i])
+        # removes first location of list
         RedsWins.remove(RedsWins[i])
         NewList.pop(0)
         NewList.pop(16)
+        # stores data into dictionary
         RedsDict = {year: NewList}
 
         return RedsDict
@@ -36,24 +40,30 @@ def dataOrganizerReds(year, RedsWins):
 def dataStoreReds(RedsTotalData, year, variables, path):
     df = pd.DataFrame.from_dict(RedsTotalData, orient="index")
     path = path + "/upload/Totals/RedsData{}.csv".format(year)
+    # checks if file exist
     if os.path.isfile("upload/Totals/RedsData{}.csv".format(year)):
         print(path, "already exist")
     else:
+    # stores csv file
         df.to_csv("upload/Totals/RedsData{}.csv".format(year), header = variables)
         print("Successfully uploaded to:", path)
 
 def dataOrganizerCards(year, CardsWins):
 
+    # checks if file exist
     if os.path.isfile("upload/Cardinals/StlCards{}.csv".format(year)):
         i = 0
+        # reads in csv files
         df = pd.read_csv("upload/Cardinals/StlCards{}.csv".format(year), header=None)
         row = df.tail(1)
         CardsData = row.values.tolist()
         NewList = list(chain.from_iterable(CardsData))
         NewList.extend(CardsWins[i])
+        # removes first location
         CardsWins.remove(CardsWins[i])
         NewList.pop(0)
         NewList.pop(16)
+        # stores data into dictionary
         CardsDict = {year: NewList}
         return CardsDict
     else:
@@ -63,24 +73,30 @@ def dataOrganizerCards(year, CardsWins):
 def dataStoreCards(CardsTotalData, year, variables, path):
     df = pd.DataFrame.from_dict(CardsTotalData, orient="index")
     path = path + "/upload/Totals/CardsData{}.csv".format(year)
+    # checks if file exist
     if os.path.isfile("upload/Totals/CardsData{}.csv".format(year)):
         print(path, "already exist")
     else:
+    # stores file as csv
         df.to_csv("upload/Totals/CardsData{}.csv".format(year), header = variables)
         print("Successfully uploaded to:", path)
 
 def dataOrganizerBraves(year, BravesWins):
 
+    # checks if file exist
     if os.path.isfile("upload/Braves/AtlBraves{}.csv".format(year)):
         i = 0
+    # reads in csv files
         df = pd.read_csv("upload/Braves/AtlBraves{}.csv".format(year), header=None)
         row = df.tail(1)
         BravesData = row.values.tolist()
         NewList = list(chain.from_iterable(BravesData))
         NewList.extend(BravesWins[i])
+        # removes first location
         BravesWins.remove(BravesWins[i])
         NewList.pop(0)
         NewList.pop(16)
+        # stores data in dictionary
         BravesDict = {year: NewList}
         return BravesDict
     else:
@@ -90,24 +106,30 @@ def dataOrganizerBraves(year, BravesWins):
 def dataStoreBraves(BravesTotalData, year, variables, path):
     df = pd.DataFrame.from_dict(BravesTotalData, orient="index")
     path = path + "/upload/Totals/BravesData{}.csv".format(year)
+    # checks if file exist
     if os.path.isfile("upload/Totals/BravesData{}.csv".format(year)):
         print(path, "already exist")
     else:
+    # uploads file as csv
         df.to_csv("upload/Totals/BravesData{}.csv".format(year), header = variables)
         print("Successfully uploaded to:", path)
 
 def dataOrganizerBrewers(year, BrewersWin):
 
+    # checks if file exist
     if os.path.isfile("upload/Brewers/MilBrew{}.csv".format(year)):
         i = 0
+        # reads in csv files
         df = pd.read_csv("upload/Brewers/MilBrew{}.csv".format(year), header=None)
         row = df.tail(1)
         BrewersData = row.values.tolist()
         NewList = list(chain.from_iterable(BrewersData))
         NewList.extend(BrewersWin[i])
+        # removes first location
         BrewersWin.remove(BrewersWin[i])
         NewList.pop(0)
         NewList.pop(16)
+        # stores data in dictionary
         BrewersDict = {year: NewList}
         return BrewersDict
     else:
@@ -117,24 +139,30 @@ def dataOrganizerBrewers(year, BrewersWin):
 def dataStoreBrewers(BrewersTotalData, year, variables, path):
     df = pd.DataFrame.from_dict(BrewersTotalData, orient="index")
     path = path + "/upload/Totals/BrewersData{}.csv".format(year)
+    # check if files exist
     if os.path.isfile("upload/Totals/BrewersData{}.csv".format(year)):
         print(path, "already exist")
     else:
+    # stores data in csv
         df.to_csv("upload/Totals/BrewersData{}.csv".format(year), header = variables)
         print("Successfully uploaded to:", path)
 
 def dataOrganizerCubs(year, CubsWins):
 
+    # check if file exist
     if os.path.isfile("upload/Cubs/ChicCubs{}.csv".format(year)):
         i = 0
+        # read in csv file
         df = pd.read_csv("upload/Cubs/ChicCubs{}.csv".format(year), header=None)
         row = df.tail(1)
         CubsData = row.values.tolist()
         NewList = list(chain.from_iterable(CubsData))
         NewList.extend(CubsWins[i])
+        # removes first location of wins
         CubsWins.remove(CubsWins[i])
         NewList.pop(0)
         NewList.pop(16)
+        # stores data in dictionary
         CubsDict = {year: NewList}
         return CubsDict
     else:
@@ -144,24 +172,30 @@ def dataOrganizerCubs(year, CubsWins):
 def dataStoreCubs(CubsTotalData, year, variables, path):
     df = pd.DataFrame.from_dict(CubsTotalData, orient="index")
     path = path + "/upload/Totals/CubsData{}.csv".format(year)
+    # checks if file exist
     if os.path.isfile("upload/Totals/CubsData{}.csv".format(year)):
         print(path, "already exist")
     else:
+    # stores data in csv file
         df.to_csv("upload/Totals/CubsData{}.csv".format(year), header = variables)
         print("Successfully uploaded to:", path)
 
 def dataOrganizerDBacks(year, DBacksWins):
 
+    # checks if file exist
     if os.path.isfile("upload/DBacks/AriDBacks{}.csv".format(year)):
         i = 0
+        # reads in csv file
         df = pd.read_csv("upload/DBacks/AriDBacks{}.csv".format(year), header=None)
         row = df.tail(1)
         DBacksData = row.values.tolist()
         NewList = list(chain.from_iterable(DBacksData))
         NewList.extend(DBacksWins[i])
+        # removes first location of wins
         DBacksWins.remove(DBacksWins[i])
         NewList.pop(0)
         NewList.pop(16)
+        # stores data in dictionary
         DBacksDict = {year: NewList}
         return DBacksDict
     else:
@@ -171,24 +205,30 @@ def dataOrganizerDBacks(year, DBacksWins):
 def dataStoreDBacks(DBacksTotalData, year, variables, path):
     df = pd.DataFrame.from_dict(DBacksTotalData, orient="index")
     path = path + "/upload/Totals/DBacksData{}.csv".format(year)
+    # checks if file exist
     if os.path.isfile("upload/Totals/DBacksData{}.csv".format(year)):
         print(path, "already exist")
     else:
+    # stores file as csv
         df.to_csv("upload/Totals/DBacksData{}.csv".format(year), header = variables)
         print("Successfully uploaded to:", path)
 
 def dataOrganizerGiants(year, GiantsWins):
 
+    # checks if file exist
     if os.path.isfile("upload/Giants/SfGiants{}.csv".format(year)):
         i = 0
+        # reads in csv
         df = pd.read_csv("upload/Giants/SfGiants{}.csv".format(year), header=None)
         row = df.tail(1)
         GiantsData = row.values.tolist()
         NewList = list(chain.from_iterable(GiantsData))
         NewList.extend(GiantsWins[i])
+        # removes first win
         GiantsWins.remove(GiantsWins[i])
         NewList.pop(0)
         NewList.pop(16)
+        # stores data in dictionary
         GiantsDict = {year: NewList}
         return GiantsDict
     else:
@@ -198,24 +238,30 @@ def dataOrganizerGiants(year, GiantsWins):
 def dataStoreGiants(GiantsTotalData, year, variables, path):
     df = pd.DataFrame.from_dict(GiantsTotalData, orient="index")
     path = path + "/upload/Totals/GiantsData{}.csv".format(year)
+    # checks if file exist
     if os.path.isfile("upload/Totals/GiantsData{}.csv".format(year)):
         print(path, "already exist")
     else:
+    # stores data as a csv
         df.to_csv("upload/Totals/GiantsData{}.csv".format(year), header = variables)
         print("Successfully uploaded to:", path)
 
 def dataOrganizerMets(year, MetsWins):
 
+    # checks if file exist
     if os.path.isfile("upload/Mets/NYMets{}.csv".format(year)):
         i = 0
+        # reads in csv
         df = pd.read_csv("upload/Mets/NYMets{}.csv".format(year), header=None)
         row = df.tail(1)
         MetsData = row.values.tolist()
         NewList = list(chain.from_iterable(MetsData))
         NewList.extend(MetsWins[i])
+        # removes mets first win location
         MetsWins.remove(MetsWins[i])
         NewList.pop(0)
         NewList.pop(16)
+        # stores data in dictionary
         MetsDict = {year: NewList}
         return MetsDict
     else:
@@ -225,24 +271,30 @@ def dataOrganizerMets(year, MetsWins):
 def dataStoreMets(MetsTotalData, year, variables, path):
     df = pd.DataFrame.from_dict(MetsTotalData, orient="index")
     path = path + "/upload/Totals/MetsData{}.csv".format(year)
+    # check if file exist
     if os.path.isfile("upload/Totals/MetsData{}.csv".format(year)):
         print(path, "already exist")
     else:
+    # stores as a csv
         df.to_csv("upload/Totals/MetsData{}.csv".format(year), header = variables)
         print("Successfully uploaded to:", path)
 
 def dataOrganizerPadres(year, PadresWins):
 
+    # checks if file exist
     if os.path.isfile("upload/Padres/SdPadres{}.csv".format(year)):
         i = 0
+        # reads in csv
         df = pd.read_csv("upload/Padres/SdPadres{}.csv".format(year), header=None)
         row = df.tail(1)
         PadresData = row.values.tolist()
         NewList = list(chain.from_iterable(PadresData))
         NewList.extend(PadresWins[i])
+        # team wins remove first location
         PadresWins.remove(PadresWins[i])
         NewList.pop(0)
         NewList.pop(16)
+        # data stored in dictionary
         PadresDict = {year: NewList}
         return PadresDict
     else:
@@ -252,24 +304,30 @@ def dataOrganizerPadres(year, PadresWins):
 def dataStorePadres(PadresTotalData, year, variables, path):
     df = pd.DataFrame.from_dict(PadresTotalData, orient="index")
     path = path + "/upload/Totals/PadresData{}.csv".format(year)
+    # checks if file exist
     if os.path.isfile("upload/Totals/PadresData{}.csv".format(year)):
         print(path, "already exist")
     else:
+    # stores file as csv
         df.to_csv("upload/Totals/PadresData{}.csv".format(year), header = variables)
         print("Successfully uploaded to:", path)
 
 def dataOrganizerPhillies(year, PhilliesWins):
 
+    # check if file exist
     if os.path.isfile("upload/Phillies/PhiPhil{}.csv".format(year)):
         i = 0
+        # reads in csv
         df = pd.read_csv("upload/Phillies/PhiPhil{}.csv".format(year), header=None)
         row = df.tail(1)
         PhilliesData = row.values.tolist()
         NewList = list(chain.from_iterable(PhilliesData))
         NewList.extend(PhilliesWins[i])
+        # removes first location of list
         PhilliesWins.remove(PhilliesWins[i])
         NewList.pop(0)
         NewList.pop(16)
+        # stores data into dictionary
         PhilliesDict = {year: NewList}
         return PhilliesDict
     else:
@@ -279,24 +337,30 @@ def dataOrganizerPhillies(year, PhilliesWins):
 def dataStorePhillies(PhilliesTotalData, year, variables, path):
     df = pd.DataFrame.from_dict(PhilliesTotalData, orient="index")
     path = path + "/upload/Totals/PhilliesData{}.csv".format(year)
+    # checks if file exist
     if os.path.isfile("upload/Totals/PhilliesData{}.csv".format(year)):
         print(path, "already exist")
     else:
+    # store data as csv
         df.to_csv("upload/Totals/PhilliesData{}.csv".format(year), header = variables)
         print("Successfully uploaded to:", path)
 
 def dataOrganizerPirates(year, PiratesWins):
 
+    # checks if file exist
     if os.path.isfile("upload/Pirates/PitPirate{}.csv".format(year)):
         i = 0
+        # reads csv in
         df = pd.read_csv("upload/Pirates/PitPirate{}.csv".format(year), header=None)
         row = df.tail(1)
         PiratesData = row.values.tolist()
         NewList = list(chain.from_iterable(PiratesData))
         NewList.extend(PiratesWins[i])
+        # removes first location of list
         PiratesWins.remove(PiratesWins[i])
         NewList.pop(0)
         NewList.pop(16)
+        # stores data in dictionary
         PiratesDict = {year: NewList}
         return PiratesDict
     else:
@@ -306,24 +370,30 @@ def dataOrganizerPirates(year, PiratesWins):
 def dataStorePirates(PiratesTotalData, year, variables, path):
     df = pd.DataFrame.from_dict(PiratesTotalData, orient="index")
     path = path + "/upload/Totals/PiratesData{}.csv".format(year)
+    # checks if file exist
     if os.path.isfile("upload/Totals/PiratesData{}.csv".format(year)):
         print(path, "already exist")
     else:
+    # stores file as csv
         df.to_csv("upload/Totals/PiratesData{}.csv".format(year), header = variables)
         print("Successfully uploaded to:", path)
 
 def dataOrganizerRockies(year, RockiesWins):
 
+    # checks if file exist
     if os.path.isfile("upload/Rockies/ColRockies{}.csv".format(year)):
         i = 0
+        # reads in csv
         df = pd.read_csv("upload/Rockies/ColRockies{}.csv".format(year), header=None)
         row = df.tail(1)
         RockiesData = row.values.tolist()
         NewList = list(chain.from_iterable(RockiesData))
         NewList.extend(RockiesWins[i])
+        # removes fist location of list
         RockiesWins.remove(RockiesWins[i])
         NewList.pop(0)
         NewList.pop(16)
+        # stores data in dictionary
         RockiesDict = {year: NewList}
         return RockiesDict
     else:
@@ -333,25 +403,31 @@ def dataOrganizerRockies(year, RockiesWins):
 def dataStoreRockies(RockiesTotalData, year, variables, path):
     df = pd.DataFrame.from_dict(RockiesTotalData, orient="index")
     path = path + "/upload/Totals/RockiesData{}.csv".format(year)
+    # checks if file exist
     if os.path.isfile("upload/Totals/RockiesData{}.csv".format(year)):
         print(path, "already exist")
     else:
+    # stores data as csv
         df.to_csv("upload/Totals/RockiesData{}.csv".format(year), header = variables)
         print("Successfully uploaded to:", path)
 
 def totalData(path):
+    # finds a path
     path = path + "/upload/Totals/"
+    # reads in file stored in path
     all_files = glob.glob(path + "/*.csv")
     li = []
     i = 0
     for filename in all_files:
         df = pd.read_csv(filename, index_col=None, header=0)
+        # stores new files
         li.append(df)
     frame = pd.concat(li, axis=0, ignore_index=True)
+    # sends file as csv
     frame.to_csv("upload/TotalData.csv")
 
 def main():
-
+    # gets path
     path = os.getcwd()
 
     url = "https://www.espn.com/mlb/team/stats/_/name/phi/season/2002/seasontype/2"
@@ -365,6 +441,7 @@ def main():
     variables.pop(16)
     variables.append("Wins")
 
+    # stores team regular season wins from 2002-2019
     RedsWins = [['78'],['69'],['76'],['73'],['80'],['72'],['74'],['78'],['91'],['79'],['97'],['90'],['76'],['64'],['68'],['68'],['67'],['75']]
     CardsWins = [['97'],['85'],['105'],['100'],['83'],['78'],['86'],['91'],['86'],['90'],['88'],['97'],['90'],['100'],['86'],['83'],['88'],['91']]
     BravesWins = [['101'],['101'],['96'],['90'],['79'],['84'],['72'],['86'],['91'],['89'],['94'],['96'],['79'],['67'],['68'],['72'],['90'],['97']]
@@ -378,6 +455,7 @@ def main():
     PiratesWins = [['72'],['75'],['72'],['67'],['67'],['68'],['67'],['62'],['57'],['72'],['79'],['94'],['88'],['98'],['78'],['75'],['82'],['69']]
     RockiesWins = [['73'],['74'],['68'],['67'],['76'],['90'],['74'],['92'],['83'],['73'],['64'],['74'],['66'],['68'],['75'],['87'],['91'],['71']]
 
+    # collects user starting and ending year
     while True:
         while True:
             try:
@@ -398,6 +476,7 @@ def main():
         else:
             print("Invalid starting year, try again.")
 
+    # creates empty dictionary to be used later
     RedsTotalData = {}
     CardsTotalData = {}
     BravesTotalData = {}
@@ -411,6 +490,7 @@ def main():
     PiratesTotalData = {}
     RockiesTotalData = {}
 
+    # organizes data for selected teams
     while True:
         user_choice = input("Would you like to organize data for every team, Yes or No:")
         selection = user_choice.lower()
@@ -562,6 +642,7 @@ def main():
             print("Please run again as an inproper selection was made.")
             continue
 
+    # gives user option to organize all data combined
     while True:
         user_choice = input("Would you like to combine data for every team, Yes or No:")
         selection = user_choice.lower()

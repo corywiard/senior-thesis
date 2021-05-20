@@ -68,9 +68,6 @@ def dataCollectorCardinals(year, variables):
         # pull in web's source code
     url = "https://www.espn.com/mlb/team/stats/_/name/cin/season/{}/seasontype/2".format(year)
     html = urlopen(url)
-
-    #print(url)
-
     soup = BeautifulSoup(html, "lxml")
 
     # collects variable names
@@ -505,6 +502,7 @@ def data_store_csv_Reds(year, names_dict_reds, path):
     if os.path.isfile("upload/Reds/cincyReds{}.csv".format(year)):
         print(path, "already exist")
     else:
+    # uploads csv file
         df.to_csv("upload/Reds/cincyReds{}.csv".format(year), header = 0)
         print("Successfully uploaded to:", path)
 
@@ -512,103 +510,136 @@ def data_store_csv_Cards(year, names_dict_cards, path):
     # transfering data to CSV
     df = pd.DataFrame.from_dict(names_dict_cards, orient="index")
     path = path + "/upload/Cardinals/StlCards{}.csv".format(year)
+    # checks if file exist already
     if os.path.isfile("upload/Cardinals/StlCards{}.csv".format(year)):
         print(path, "already exist")
     else:
+    # uploads csv file
         df.to_csv("upload/Cardinals/StlCards{}.csv".format(year), header = 0)
         print("Successfully uploaded to:", path)
 
 def data_store_csv_Pit(year, names_dict_pit, path):
+    # transfering data to CSV
     df = pd.DataFrame.from_dict(names_dict_pit, orient="index")
     path = path + "/upload/Pirates/PitPirate{}.csv".format(year)
+    # checks if file exist already
     if os.path.isfile("upload/Pirates/PitPirate{}.csv".format(year)):
         print(path, "already exist")
     else:
+    # uploads csv file
         df.to_csv("upload/Pirates/PitPirate{}.csv".format(year), header = 0)
         print("Successfully uploaded to:", path)
 
 def data_store_csv_Cubs(year, names_dict_cubs, path):
+    # transfering data to CSV
     df = pd.DataFrame.from_dict(names_dict_cubs, orient="index")
     path = path + "/upload/Cubs/ChicCubs{}.csv".format(year)
+    # checks if file exist already
     if os.path.isfile("upload/Cubs/ChicCubs{}.csv".format(year)):
         print(path, "already exist")
     else:
+    # uploads csv file
         df.to_csv("upload/Cubs/ChicCubs{}.csv".format(year), header = 0)
         print("Successfully uploaded to:", path)
 
 def data_store_csv_Brew(year, names_dict_brew, path):
+    # transfering data to CSV
     df = pd.DataFrame.from_dict(names_dict_brew, orient="index")
     path = path + "/upload/Brewers/MilBrew{}.csv".format(year)
+    # checks if file exist already
     if os.path.isfile("upload/Brewers/MilBrew{}.csv".format(year)):
         print(path, "already exist")
     else:
+    # uploads csv file
         df.to_csv("upload/Brewers/MilBrew{}.csv".format(year), header = 0)
         print("Successfully uploaded to:", path)
 
 def data_store_csv_Braves(year, names_dict_braves, path):
+    # transfering data to CSV
     df = pd.DataFrame.from_dict(names_dict_braves, orient="index")
     path = path + "/upload/Braves/AtlBraves{}.csv".format(year)
+    # checks if file exist already
     if os.path.isfile("upload/Braves/AtlBraves{}.csv".format(year)):
         print(path, "already exist")
     else:
+    # uploads csv file
         df.to_csv("upload/Braves/AtlBraves{}.csv".format(year), header = 0)
         print("Successfully uploaded to:", path)
 
 def data_store_csv_Phil(year, names_dict_phil, path):
+    # transfering data to CSV
     df = pd.DataFrame.from_dict(names_dict_phil, orient="index")
     path = path + "/upload/Phillies/PhiPhil{}.csv".format(year)
+    # checks if file exist already
     if os.path.isfile("upload/Phillies/PhiPhil{}.csv".format(year)):
         print(path, "already exist")
     else:
+    # uploads csv file
         df.to_csv("upload/Phillies/PhiPhil{}.csv".format(year), header = 0)
         print("Successfully uploaded to:", path)
 
 def data_store_csv_Mets(year, names_dict_mets, path):
+    # transfering data to CSV
     df = pd.DataFrame.from_dict(names_dict_mets, orient="index")
     path = path + "/upload/Mets/NYMets{}.csv".format(year)
+    # checks if file exist already
     if os.path.isfile("upload/Mets/NYMets{}.csv".format(year)):
         print(path, "already exist")
     else:
+    # uploads csv file
         df.to_csv("upload/Mets/NYMets{}.csv".format(year), header = 0)
         print("Successfully uploaded to:", path)
 
 def data_store_csv_DBacks(year, names_dict_dbacks, path):
+    # transfering data to CSV
     df = pd.DataFrame.from_dict(names_dict_dbacks, orient="index")
     path = path + "/upload/DBacks/AriDBacks{}.csv".format(year)
+    # checks if file exist already
     if os.path.isfile("upload/DBacks/AriDBacks{}.csv".format(year)):
         print(path, "already exist")
     else:
+    # uploads csv file
         df.to_csv("upload/DBacks/AriDBacks{}.csv".format(year), header = 0)
         print("Successfully uploaded to:", path)
 
 def data_store_csv_Giants(year, names_dict_giants, path):
+    # transfering data to CSV
     df = pd.DataFrame.from_dict(names_dict_giants, orient="index")
     path = path + "/upload/Giants/SfGiants{}.csv".format(year)
+    # checks if file exist already
     if os.path.isfile("upload/Giants/SfGiants{}.csv".format(year)):
         print(path, "already exist")
     else:
+    # uploads csv file
         df.to_csv("upload/Giants/SfGiants{}.csv".format(year), header = 0)
         print("Successfully uploaded to:", path)
 
 def data_store_csv_Rockies(year, names_dict_rockies, path):
+    # transfering data to CSV
     df = pd.DataFrame.from_dict(names_dict_rockies, orient="index")
     path = path + "/upload/Rockies/ColRockies{}.csv".format(year)
+    # checks if file exist already
     if os.path.isfile("upload/Rockies/ColRockies{}.csv".format(year)):
         print(path, "already exist")
     else:
+    # uploads csv file
         df.to_csv("upload/Rockies/ColRockies{}.csv".format(year), header = 0)
         print("Successfully uploaded to:", path)
 
 def data_store_csv_Padres(year, names_dict_padres, path):
+    # transfering data to CSV
     df = pd.DataFrame.from_dict(names_dict_padres, orient="index")
     path = path + "/upload/Padres/SdPadres{}.csv".format(year)
+    # checks if file exist already
     if os.path.isfile("upload/Padres/SdPadres{}.csv".format(year)):
         print(path, "already exist")
     else:
+    # uploads csv file
         df.to_csv("upload/Padres/SdPadres{}.csv".format(year), header = 0)
         print("Successfully uploaded to:", path)
 
 def CreateDirectory(path):
+    # creates folders for all teams
     path = path + "/upload"
     try:
         os.mkdir(path)
@@ -735,10 +766,11 @@ def CreateDirectory(path):
         print ("Successfully created the directory %s " % path)
 
 def main():
+    # collects user path
     path = os.getcwd()
-    print(path)
     CreateDirectory(path)
 
+    # get user input for starting and ending year
     while True:
         while True:
             try:
@@ -759,8 +791,10 @@ def main():
         else:
             print("Invalid starting year, try again.")
 
+    # collects data variables
     variables = variableNameCollector(year)
 
+    # runs functions for data collection
     while True:
         user_choice = input("Would you like to collect data for every team, Yes or No:")
         selection = user_choice.lower()
