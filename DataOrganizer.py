@@ -496,6 +496,7 @@ def main():
         selection = user_choice.lower()
         if selection == "yes":
             while year <= yearEnd:
+                # organizes data for all teams
                 RedsDict = dataOrganizerReds(year, RedsWins)
                 RedsTotalData.update(RedsDict)
 
@@ -534,6 +535,7 @@ def main():
 
                 year = year + 1
 
+            # function to store the data
             dataStoreReds(RedsTotalData, year, variables, path)
             dataStoreCards(CardsTotalData, year, variables, path)
             dataStoreBraves(BravesTotalData, year, variables, path)
@@ -548,6 +550,7 @@ def main():
             dataStoreRockies(RockiesTotalData, year, variables, path)
             break
 
+        # gives user option to select one single team
         elif selection == "no":
             user_selection = input("Select a team data to collect from the following: Braves, Brewers, Cardinals, Cubs, DBacks, Giants, Mets, Padres, Phillies, Pirates, Reds, or Rockies:")
             team_selection = user_selection.lower()

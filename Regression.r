@@ -6,7 +6,6 @@ Braves <- read_csv("/Users/corywiard/desktop/Comp/senior-thesis/upload/BravesDat
 model <- lm(data = Braves, Wins ~ GP + AB + R + H + TB + SB + AVG + OBP + SLG)
 summary(model)
 
-
 Brewers <- read_csv("/Users/corywiard/desktop/Comp/senior-thesis/upload/BrewersData2020.csv")
 model <- lm(data = Brewers, Wins ~ GP + AB + R + H + TB + SB + AVG + OBP + SLG)
 summary(model)
